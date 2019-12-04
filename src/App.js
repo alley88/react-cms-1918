@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Redirect, Switch,Route} from "react-router-dom"
-import { RouteConfig } from "router"
-import routeEach from "utils/routeEach"
+import { Switch, Redirect } from "react-router-dom";
+import routeEach from "utils/routeEach";
+import { LayoutRoutes } from "router"
+import Layout from "layout"
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Redirect from="/" to="/home" exact/>
-          {routeEach(RouteConfig)}
-        </Switch>
-      </Router>
+      <Switch>
+        <Layout>
+          <Redirect from="/" to="/home" exact />
+          {routeEach(LayoutRoutes)}
+        </Layout>
+      </Switch>
     )
   }
 }

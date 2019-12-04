@@ -1,31 +1,21 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Cookies from "js-cookie"
-import Layout from "layout"
-export default (routes) => {
 
-    function isLayout(item) {
-        if (item.meta.flag) {
-            return <Layout><item.component /></Layout>
-        } else {
-            return <item.component />
-        }
-    }
+export default (routes) => {
 
 
     function isLogin(item) {
-       
         if (item.path !== "/login" && item.meta.requiredAuth) {
-          
 
             if (Cookies.get("token")) {
-                return isLayout(item)
+                return <item.component />
             } else {
                 return <Redirect to="/login" />
             }
         } else {
             
-            return isLayout(item)
+            return  <item.component />
         }
     }
 
@@ -40,7 +30,7 @@ export default (routes) => {
                                 if (child.children) {
                                     return childrenMap(child);
                                 } else {
-                                    return isLogin(child)
+                                    return  isLogin(child)
                                 }
                             }} />
                         ))
