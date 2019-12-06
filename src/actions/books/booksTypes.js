@@ -1,0 +1,1 @@
+export const BooksListTypes = "BOOKS_LIST_TYPES"
